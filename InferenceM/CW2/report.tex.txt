@@ -1,0 +1,305 @@
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{chngcntr}
+\usepackage[UKenglish]{babel}% http://ctan.org/pkg/babel
+\newcommand\inv[1]{#1\raisebox{1.15ex}{$\scriptscriptstyle-\!1$}}
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times§]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% The graphicx package provides the includegraphics command.
+\usepackage{graphicx}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+
+\usepackage[scale=0.8]{geometry}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+\journal{COMS30007}
+
+\begin{document}
+
+%% Title, authors and addresses
+
+\title{Inference}
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author{Adam Sadiq - 34795, Ashwinder Khurana - 36208 }
+
+\address{Machine Learning}
+
+\maketitle
+
+%%
+%% Start line numbering here if you want
+%%
+
+%% main text
+
+
+% \begin{table}[h]
+% \centering
+% \begin{tabular}{l l l}
+% \hline
+% \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+% \hline
+% Treatment 1 & 0.0003262 & 0.562 \\
+% Treatment 2 & 0.0015681 & 0.910 \\
+% Treatment 3 & 0.0009271 & 0.296 \\
+% \hline
+% \end{tabular}
+% \caption{Table caption}
+% \end{table}
+
+\begin{figure}[h!]
+\centering
+  \subfloat[Figure 1: Original Image]{
+  \includegraphics[width=0.3\textwidth]{pug-done.jpg}
+  }
+  \hfill
+  \centering
+  \subfloat[Figure 2: Gaussian Noise]{
+  \includegraphics[width=0.3\textwidth]{gaussian.png}
+  }
+  \hfill
+  \centering
+  \subfloat[Figure 3: Salt and Pepper Noise]{
+  \includegraphics[width=0.3\textwidth]{saltnpeppar.png}
+  }
+%   \textbf{\caption{Results produced for the 16x16 image}}
+\end{figure}
+
+
+\section*{Question 1}
+
+\textbf{Implement ICM for a binary image that you have corrupted with noise, show the result for a set of images with different noise levels. How many passes through the nodes do you need until you are starting to get descent results?}
+
+
+% With more iterations, it is evident that because of our prior[1], our image will continue to be leveled out with respect to the surrounding pixel values. Our prior takes into account the assumption that each pixel is corrupted (flipped) independently, and with some probability. Thus, our prior adds $\eta$
+% if the reconstructed pixel and the observed (original) pixel do not match.” For our image, low values of $\tau$ are still suitable and accurate, in respect to the original image, yet given infinite iterations of $\tau$, it will be result as a greyed\textbackslash averaged out image.
+
+%I think theres too much maths/theory in your answer, dont think he wants to know about it, judging from the question.
+
+% With more iterations, it is evident that because of our prior[1], our image will continue to be leveled out with respect to the surrounding pixel values. Our prior takes into account the assumption that each pixel is corrupted (flipped) independently, and with some probability. The equation below illustrates that if the reconstructed pixel and the observed pixel do not have the same sign, there will be a higher energy cost to correct the image because there is little correlation between the two pixels. 
+
+
+\textit{Figure 2} and \textit{Figure 3} are corrupted versions of \textit{Figure 1} (Our original image), just with different methods of statistical corruption. Using ICM we obtain the image in \textit{Figure 4} fairly quickly as we begin to get decent results after 1 iteration of the algorithm. The reasoning behind obtaining quick results is fairly intuitive as our Gaussian Noise image in \textit{Figure 2} is fairly correlated with the original image despite the background. This meant that the ICM produces fairly low energy costs using the equation below (and therefore high probability) for the pixels that represent the face of the pug, and high energy costs for the noisy background pixels. However, the reconstructed image in \textit{Figure 4} is still imperfect as there is still a huge grainy effect within the image, where the original image has a large group of solid black pixels, our reconstructed image has varying pixel values within the main body of the image.
+
+\begin{equation}
+   E(x,y) =  -\eta \sum x_i y_i + \beta \sum x_i y_i
+\end{equation}
+
+
+\begin{figure}[H]
+\centering
+  \subfloat[Figure 4: Iterative Conditional Modes output]{
+  \includegraphics[width=0.3\textwidth]{icm-final.png}
+  }
+\end{figure}
+
+\vspace{-1cm}
+\section*{Question 2}
+
+\textbf{Implement the Gibbs sampler for the image denoising task. Generate images with different amount of noise and see where it fails and where it works. My result is shown in Figure 2.}
+
+The Gibbs sampler draws samples from a normal distribution, this sampled probability is then compared to a probability \textit{x} that if a particular pixel ,when compared to its neighbours, is white or not. If the sample probability from the Gibbs Sampler is bigger than \textit{x}, then the selected pixel is white. If the opposite is true, then the selected pixel is white. 
+The overall effect of the Gibbs sampling method is that there are larger clusters of black or white pixel groups, when compared to the ICM denoising algorithm. This is down to the fact that Gibbs usses a distrbution to decide when to sample, whilst the ICM is a much more basic implmentation of incorporating neighbouring pixel values. 
+
+In comparison to ICM, the Gibbs sampling method works much better by clustering more black pixels together to produce a solid foreground, however, the area in and around the mouth of the pug is where the sampling fails, because there is a less defined structure for the mouth area, which is not ideal. 
+
+\begin{figure}[H]
+\centering
+  \subfloat[Figure 5: Gibbs Sampling varSigma = 0.7
+]{
+  \includegraphics[width=0.3\textwidth]{gibbs-noise.png}
+  }
+  \hfill
+  \centering
+  \subfloat[Figure 6: Gibbs Sampling varSigma = 0.4]{
+  \includegraphics[width=.3\textwidth]{gibbs-final.png}
+  }
+  \hfill
+  \centering
+  \subfloat[Figure 7: Gibbs Sampling varSigma = 0.2]{
+  \includegraphics[width=.3\textwidth]{gibbs-final.png}
+  }
+\end{figure}
+
+
+\section*{Question 3}
+
+\textbf{There is nothing saying that you should cycle through the nodes in the graph index by index, you can pick any different order and you do not have to visit each node equally many times either. Alter your sampler so that it picks and updates a random node each iteration. Are the results different? Do you need more or less iterations? To get reproduceable results fix the random seed in your code with np.random.seed(42).}
+
+In \textit{Figure 6} below, we can see an implementation of visiting nodes an unequal amount of times using a random probability. For 1 iteration, we can see that our results are not dissimilar to the initial Gibbs sampling method. As we further iterate and visit more nodes with varying probability, we can see the boundaries and edges loose accuracy. For example, the mouth boundary for the image loses its shape as the number of iterations increase. In addition, we begin to loose some detail around the eyes of the pug which is not ideal. 
+Overall, it means that we need less iterations for to produce a more accurate representation of our original image. 
+
+
+%analyse images more
+
+\section*{Question 4}
+
+
+\textbf{What effect does the number of iterations we run the sampler have on the results? Try to run it for different times, does the result always get better?}
+
+\begin{figure}[H]
+\centering
+  \subfloat[Figure 6: Altered Gibbs Sampling with 1,5,10 iterations]{
+  \includegraphics[width=1\textwidth]{alteredGibbs.png}
+  }
+\end{figure}
+
+After producing the images in , it is evident that the more iterations we have on the image, the worse the image becomes. This is largely to do with the amount of accuracy and detail around the image. Each iteration very much adheres to the same general shape, however after honing in on the image we found that the detail is lost. Observing our image we see that the black pixels become more clustered together, almost leaving a more patchy outlook. This is most likely due to our likelihood of pixels tending to have the same value as neighbouring pixels. Thus with more iterations, neighbouring pixel values seems to have more weighting to decide the current pixels value. 
+
+ %try and play with parameters to show good and bad resuls
+
+
+\section*{Question 5}
+
+\textbf{What will be the difference between $\boldsymbol{KL(q(x)||p(x))}$ and $\boldsymbol{KL(p(x)||q(x))}$? Think of where $\boldsymbol{q(x)}$ would place probability mass in the different scenarios.}
+
+% The KL divergence measure is a measure of similarity between distributions, however, there is no notion of symmetry in the measurement, this is because the 'distance' measure used a relative one. This distance will only be symmetrical if p(x) = q(x).  This implies that in the differing scenarios, there would be a difference depending on the probability distributions of q(x) and p(x). In $1^{st}$ case: $KL(q(x)||p(x))$, where $q(x)$ is large and therefore dissimilar to $p(x)$, the result will be large, resulting in a correct measure. In the $2^{nd}$ case: $KL(p(x)||q(x))$, $q(x)$ can place probability mass in areas where it shouldn't. In the case where $q(x)$ is much larger than $p(x)$, we still get a 0 KL divergence.
+
+The KL divergence is a measure of how similar two probability distributions are to one another. If the two distributions are the exact same, the KL divergence measure will be 0. This makes our objective clear,is to then minimise the KL divergence measure in order to produce an accurate approximation to the intractable integral. 
+
+To highlight the non symmetric property of the KL divergence measure, lets assume q(x) is a narrow distribution, for example a very a peaked Gaussian, and p(x) is a very widespread distribution (visualisation shown below in \textit{Figure 9}). In our first scenario, when integrating over x's from - $ \infty $ to + $\infty$, the majority of our q(x) values will be close 0 and we would be dividing by relatively high p(x) values, therefore overall we get a fairly low divergence measure.  Conversely, in scenario 2, when trying to fit p(x) onto q(x), we will be dividing by infinitesimally small values majority of the time, which will result in an extremely large divergence measure. 
+This loose reasoning supports the idea that the KL divergence is not a valid distance measure as it does not satisfy the symmetry property. 
+
+
+\begin{figure}[H]
+\centering
+  \subfloat[Figure 9: Example distributions to visualise both scenarios ]{
+  \includegraphics[width=0.5\textwidth]{Question5.png}
+  }
+\end{figure}
+
+
+
+
+%MORE INFO BELOW (maybe it'll help)
+% KL - Strictly positive, only 0 if the distributions are equal
+
+\section*{Question 6}
+
+\textbf{Implement the algorithm in Algorithm 4 and use it to denoise images as before.}
+
+\begin{figure}[H]
+  \centering
+  \subfloat[Figure 7: Original Image]{
+  \includegraphics[width=0.25\textwidth]{pug-done.jpg}
+  }
+  \centering
+  \subfloat[Figure 8:Variational Bayes output]{
+  \includegraphics[width=.25\textwidth]{variational-final.png}
+  }
+  
+\end{figure}
+
+
+
+\section*{Question 7}
+
+\textbf{How does the result of the Variational Bayes method compare to the two previous approaches? Try to explain the results that you get by relating it to the different methods.}
+
+Both functions try to find clever ways to work around evaluating the evidence, as the integral is intractable. ICM and Gibbs look at each pixel and uses a probability to see how likely a given value should belong to that pixel. Variational Bayes however uses a probability distribution to calculate the expectation of neighbouring pixels, and gives them different weights to ensure a more consistent output, this is much more efficient and thus, the result of the Variational Bayes is much more accurate compared to the original methods. 
+The comparison between Variational Bayes and the other method is immediate. We can see that \textit{Figure 7} has a much more solid foreground for the face of the pug with less white noise/less grainy than the other methods. Also, in our resulting image we can see that minor details are preserved throughout the image, though being very simple, the eye reflection, the outlines of the mouth, ears and face are almost identical, and also more importantly, the algorithm is very certain on making our image fully black in areas it should be.
+
+\section*{Question 8}
+
+\textbf{Implement the image segmentation with one of the inference approaches we have gone through, either the sampling based method or the deterministic approach.}
+
+\begin{figure}[H]
+  \centering
+  \subfloat[Figure 9: Original Image]{
+  \includegraphics[width=0.3\textwidth]{ronaldo7}
+  }
+  \centering
+  \subfloat[Figure 10: Image segmentation output]{
+  \includegraphics[width=.3\textwidth]{ronaldo}
+  }
+  
+\end{figure}
+
+To produce our segmented image, we followed these steps:
+
+\begin{itemize}
+    \item Colored foreground and background values in green and red respectively
+    \item Gathered original RGB values of image within coloured sections.
+    \item Created histograms to store the individual, R,G\&B values of every pixel in image
+    \item Iterated through image and used for every pixel, determined the probability of each RGB value belonging to either the foreground or the background
+    \item If the pixel has a higher probability of belonging to the background, it was set as white, and if not, was set as the corresponding original pixel value
+\end{itemize}
+
+
+
+
+
+
+
+\end{document}
